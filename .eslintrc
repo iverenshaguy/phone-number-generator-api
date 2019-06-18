@@ -12,7 +12,10 @@
      "allowImportExportEverywhere": true
   },
   "rules": {
-   "import/no-unresolved": 0,
+    "no-plusplus": 0,
+    "no-underscore-dangle": 0,
+    "class-methods-use-this": 0,
+    "import/no-unresolved": 0,
     "one-var": 0,
     "no-trailing-spaces": 1,
     "one-var-declaration-per-line": 0,

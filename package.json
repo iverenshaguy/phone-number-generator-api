@@ -3,15 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "10.7.0"
+  },
   "scripts": {
     "dev": "nodemon --exec babel-node src/app.js",
     "build": "babel src --out-dir dist",
+    "heroku-postbuild": "yarn build",
     "start": "node dist/app.js",
-    "env": "sync-dotenv"
+    "env": "sync-dotenv",
+    "test": "mocha --require @babel/register tests/tests.test.js --exit",
+    "test:coverage": "nyc --reporter=text --reporter=json --reporter=lcov mocha --require @babel/register tests/tests.test.js --timeout 50000 --exit",
+    "codecov": "codecov"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "@hapi/joi": "^15.0.3",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
@@ -29,12 +37,18 @@
     "@babel/plugin-proposal-export-default-from": "^7.2.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
     "babel-eslint": "^10.0.1",
+    "chai": "^4.2.0",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "husky": "^2.4.1",
+    "mocha": "^6.1.4",
     "nodemon": "^1.19.1",
+    "nyc": "^14.1.1",
+    "sinon": "^7.3.2",
+    "supertest": "^4.0.2",
     "sync-dotenv": "^2.2.0"
   },
   "husky": {
