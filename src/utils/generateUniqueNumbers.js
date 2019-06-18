@@ -1,6 +1,12 @@
 import fs from 'fs';
+import { config } from 'dotenv';
+
 import getUniqueNumber from './getUniqueNumber';
 import logger from './logger';
+
+config();
+
+const defaultCount = process.env.DEFAULT_COUNT || 5000;
 
 /* fs.promises is experimental so might still remove */
 const fsPromises = fs.promises;
@@ -12,7 +18,7 @@ const fsPromises = fs.promises;
  *
  * @returns {number} the unique number
  */
-const generateUniqueNumbers = async (count = 5000) => {
+const generateUniqueNumbers = async (count = defaultCount) => {
   let i = count;
   const almostFourMegabytes = 4190000;
   const stream = fs.createWriteStream('./database/numbers.txt', { flags: 'w' });

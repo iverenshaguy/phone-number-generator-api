@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import request from 'supertest';
 import app from '../../src/app';
+
 import { token, wrongUserToken, expiredToken, badToken } from '../helpers/fixtures';
 
 const URL = '/api/v1/numbers';
@@ -60,7 +61,7 @@ describe('Number Routes', () => {
     });
 
     describe('Authorized user', () => {
-      it('should generate numbers of default length 5000 in ascending order for an authorized client', (done) => {
+      it('should generate numbers of default length in ascending order for an authorized client', (done) => {
         request(app)
           .get(URL)
           .set('Authorization', `Bearer ${token}`)
