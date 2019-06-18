@@ -4,3 +4,5 @@ dist
 .env
 .DS_Store
 yarn-error.log
+coverage
+.nyc_output
